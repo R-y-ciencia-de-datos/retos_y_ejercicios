@@ -2,16 +2,19 @@
 
 ## Introducción:
 
+<p align="justify">
 Una de las habilidades fundamentales que debe adquirir cualquier profesional que trabaja con datos es la capacidad de extraer información utilizando expresiones regulares ("regexp"). En este ejercicio aprenderás y pondrás a prueba dicha habilidad mediante el análisis de un registro de chats de WhatsApp.
+</p>
 
 ## Reto:
 
 A partir del archivo suministrado en la carpeta datos:
 
--   Elabore un gráfico que muestre el top 10 de usuarios con más interacciones en el grupo.
--   Elabore un gráfico que muestre el top 5 de los países o regiones de origen de los usuarios, si esta información está disponible (por ejemplo, a partir del número telefónico).
--   Realice un análisis temporal para determinar el día de la samana con mayor flujo de mensajes.
--   [opcional] Elabore una nube de palabras con los términos más usados en el grupo.
+-  Construya una expresión regular que permita extraer la **fecha**, **hora**, **usuario** y **mensaje** de cada registro.
+-  Elabore un gráfico o tabla que muestre el top 10 de usuarios con más interacciones en el grupo.
+-  Elabore un gráfico o tabla que muestre el top 5 de los países o regiones de origen de los usuarios, si esta información está disponible (por ejemplo, a partir del número telefónico).
+-  Realice un análisis temporal para determinar el día de la samana con mayor flujo de mensajes.
+-  [opcional] Elabore una nube de palabras con los términos más usados en el grupo.
 
 ## Consideraciones:
 
