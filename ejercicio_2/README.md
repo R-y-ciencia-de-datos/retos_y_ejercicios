@@ -11,9 +11,9 @@ A partir del archivo suministrado en la carpeta datos:
 -   Elabore un gráfico que muestre el top 10 de usuarios con más interacciones en el grupo.
 -   Elabore un gráfico que muestre el top 5 de los países o regiones de origen de los usuarios, si esta información está disponible (por ejemplo, a partir del número telefónico).
 -   Realice un análisis temporal para determinar el día de la samana con mayor flujo de mensajes.
--   Elabore una nube de palabras con los términos más usados en el grupo.
+-   [opcional] Elabore una nube de palabras con los términos más usados en el grupo.
 
 ## Consideraciones:
 
 -   Preferiblemente utilice las funciones base del lenguaje (**SQL**, **Python**, **R**, **Julia**, **etc**.), evitando librerías externas cuando sea posible.
--   Al nombra el archivo en el que se encuentra su solución deberá seguir la siguiente estructura: *ejercicio_2\_[usuario_github].[ext]*
+-   Al nombra el archivo en el que se encuentra su solución deberá seguir la siguiente estructura: *ejercicio_2_[usuario_github].[ext]*
