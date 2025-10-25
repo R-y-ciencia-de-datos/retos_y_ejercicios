@@ -2,12 +2,16 @@
 
 ## Introducción:
 
-<p style="text-align: justify">El sistema de conteo Quipu, desarrollado en el altiplano andino, puede interpretarse como una estructura de datos basada en teoría de grafos. Cada cuerda y nudo representa nodos y conexiones que codifican información numérica y jerárquica. Esta perspectiva permite aplicar herramientas modernas de análisis de redes para estudiar su organización y significado. En el contexto del análisis de datos, el Quipu ofrece un modelo ancestral de codificación modular, relacional y comprimida, útil para explorar estructuras no tabulares. Su estudio aporta valor tanto histórico como metodológico, inspirando nuevas formas de representar y analizar datos complejos.</p>
+<p align="justify">
+El sistema de conteo Quipu, desarrollado en el altiplano andino, puede interpretarse como una estructura de datos basada en teoría de grafos. Cada cuerda y nudo representa nodos y conexiones que codifican información numérica y jerárquica. Esta perspectiva permite aplicar herramientas modernas de análisis de redes para estudiar su organización y significado. En el contexto del análisis de datos, el Quipu ofrece un modelo ancestral de codificación modular, relacional y comprimida, útil para explorar estructuras no tabulares. Su estudio aporta valor tanto histórico como metodológico, inspirando nuevas formas de representar y analizar datos complejos.
+</p>
 
 
 ## Reto:
 
-<p style="text-align: justify">Dado un conjunto de **vértices V** que representan nudos, y un conjunto de **aristas E** que representan las conexiones entre cuerdas en un Quipu andino, se plantea el siguiente desafío:</p>
+<p align="justify">
+Dado un conjunto de <b>vértices V</b> que representan nudos, y un conjunto de <b>aristas E</b> que representan las conexiones entre cuerdas en un Quipu andino, se plantea el siguiente desafío:
+</p>
 
 
 -   Construir la matriz de adyacencia que represente las relaciones entre los elementos del Quipu.
@@ -25,16 +29,18 @@
 
 **Ejemplo de salida:**
 
+```mermaid
+graph TD
+A((Q0)) --> B((Q1))
+A((Q0)) --> C((Q2))
+A((Q0)) --> D((Q3))
+B((Q1)) --> E((Q1a))
+B((Q1)) --> F((Q1b))
+C((Q2)) --> G((Q2a))
+D((Q3)) --> H((Q3a))
+D((Q3)) --> I((Q3b))
+D((Q3)) --> J((Q3c))
 ```
-                   Q0 
-            (nudo principal) 
-             /      |     \
-            /       |      \
-           Q1      Q2       Q3
-          /  \      |      / | \
-        Q1a   Q1b  Q2a   Q3a Q3b Q3c
-```
-
 
 
 ## Consideraciones:
