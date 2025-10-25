@@ -1,0 +1,149 @@
+---
+title: "Solución ejercicio 1"
+author: "LeafarOMU"
+format: html
+editor: visual
+---
+
+## SOLUCIÓN EJERCICIO #1: Análisis de interacción en chats de WhatsApp
+
+### Cargar librerías.
+
+```{r}
+#| echo: true
+#| message: false
+
+library(here)
+library(ggplot2)
+library(tm)
+library(wordcloud)
+library(RColorBrewer)
+
+```
+
+### Leer los registros.
+
+```{r importar_datos}
+#| echo: true
+
+registros_chats <- readLines(here("ejercicio_1/datos/registros_chat.txt"))
+
+head(registros_chats, 15)
+```
+
+### Extraer los datos de interes y almacenarlos en un objeto.
+
+Se define un *pattern* con tres grupos que representan la fecha, hora y contacto.
+
+```{r almacenar datos}
+#| echo: true
+
+patron <- r"|(^\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{1,2}.[ap]..m.)\s-\s([^:]+):.(.+)|"
+
+m <- regexec(patron, registros_chats)
+
+datos <-
+  regmatches(registros_chats, m) |>
+  do.call("rbind", args = _) |>
+  _[, c(2:5)] |>
+  as.data.frame() |>
+  setNames(c("fecha", "hora", "contacto", "texto")) |>
+  as.list()
+
+str(datos)
+```
+
+### Resolver los requerimientos.
+
+#### Punto 1: gráfico del top 10 de usuarios con más interacciones.
+
+```{r punto_1}
+datos$contacto |>
+  table() |>
+  sort(decreasing = TRUE) |>
+  head(10) |> 
+  as.data.frame() |> 
+  ggplot(aes(Freq, Var1)) +
+  geom_col() +
+  labs(
+    title = "Top 5 de los usuarios con más interacciones",
+    x = "Número de mensajes",
+    y = ""
+  )
+```
+
+#### Punto 2: gráfico del top 5 de los países de origen de los usuarios.
+
+Cabe aclarar que esto aplica para los usuarios a los que solo les aparece el número de contacto.
+
+```{r punto_2}
+
+datos_top_cinco <- ifelse(datos$contacto == "Leafar OMU", "+57 123", datos$contacto)
+
+m <- regexpr("\\b^\\+(\\d+)\\b", datos_top_cinco)
+
+regmatches(datos_top_cinco, m) |>
+  table() |> 
+  sort(decreasing = TRUE) |>
+  head(5) |> 
+  as.data.frame() |> 
+  ggplot(aes(Freq, Var1)) +
+  geom_col() +
+  labs(
+    title = "Top 5 de los paises con más interacciones",
+    x = "Número de mensajes",
+    y = "Indicativo del país"
+  )
+```
+
+#### Punto 3: análisis temporal del día de la samana con mayor flujo de mensajes.
+
+```{r punto_3}
+#| echo: true
+#| 
+datos$fecha |> 
+  as.Date("%d/%m/%Y") |> 
+  format("%A") |> 
+  table() |> 
+  sort(decreasing = TRUE) |> 
+  as.data.frame() |> 
+  ggplot(aes(Freq, Var1)) +
+  geom_col() +
+  labs(
+    title = "Número de mensajes por semana",
+    x = "Número de mensajes",
+    y = ""
+  )
+```
+
+#### Punto 4: nube de palabras con los términos más usados en el grupo.
+
+``` r
+texto <- datos$texto |> 
+  (\(x) {
+    tolower(x[x != "<Multimedia omitido>"])
+  })() |> 
+  strsplit("\\s") |> 
+  unlist()
+
+texto <- texto[!texto %in% c("mensaje", "editó")]
+
+corpus <- VCorpus(VectorSource(texto))
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeNumbers)
+corpus <- tm_map(corpus, removeWords, stopwords("spanish"))
+
+tdm <- TermDocumentMatrix(corpus)
+matriz <- as.matrix(tdm)
+frecuencias <- sort(rowSums(matriz), decreasing = TRUE)
+
+wordcloud(
+  words = names(frecuencias),
+  freq = frecuencias,
+  min.freq = 1,
+  max.words = 100,
+  random.order = FALSE,
+  colors = brewer.pal(8, "Dark2")
+)
+```
