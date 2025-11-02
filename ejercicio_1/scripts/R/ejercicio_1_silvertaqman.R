@@ -31,8 +31,9 @@ g <- graph_from_data_frame(d = df, directed = FALSE)
 A <- as.matrix(g, matrix.type="adjacency", sparse = FALSE)
 A
 # Grafico
+png("./ejercicio_1/scripts/R/quipu.png", width = 800, height = 600, res = 150)
 plot(g)
-save.image("./ejercicio_1/scripts/R/quipu.png")
+dev.off()
 
 # Grafico de la matriz
 library(ggplot2)
