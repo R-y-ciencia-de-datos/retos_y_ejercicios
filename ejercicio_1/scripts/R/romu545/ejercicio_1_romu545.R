@@ -35,7 +35,7 @@ for (nodo in E) {
 
 # gráfico
 edges <- unlist(E)
-g <- graph(edges, directed = FALSE)
+g <- make_graph(edges, directed = FALSE)
 
 plot(
   g,
