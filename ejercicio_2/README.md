@@ -18,7 +18,7 @@ A partir del archivo suministrado en la carpeta datos:
 
 **Ejemplo:**
 
-_"24/2/2025, 6:51 p. m. - +502 4141 5151: Tidyplots da mejores gráficos que ggplot2?"_
+_"24/2/2025, 6:51 p. m. - +502 4141 5XXX: Tidyplots da mejores gráficos que ggplot2?"_
 
 ## Consideraciones:
 
