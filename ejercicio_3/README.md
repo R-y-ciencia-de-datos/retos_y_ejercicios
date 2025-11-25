@@ -8,7 +8,7 @@ La organización de un proyecto es clave para su mantenimiento y escalabilidad. 
 
 ## Reto:
 
-Tu colega ha creado una página web, pero todos los archivos —HTML, css, excel, csv, imágenes y scripts— están mezclados en una sola carpeta. El programador senior, al ver este desorden, propone una solución práctica: escribir un script que organice automáticamente los archivos según su extensión.
+El junior ha creado un dashboard en Quarto, pero todos los archivos —HTML, css, excel, csv, imágenes y scripts— están mezclados en una sola carpeta. El programador senior, al ver este desorden, propone una solución práctica: escribir un script que organice automáticamente los archivos según su extensión.
 
 El reto consiste en:
 
