@@ -38,7 +38,7 @@ Se define un *pattern* con tres grupos que representan la fecha, hora y contacto
 ```{r almacenar datos}
 #| echo: true
 
-patron <- r"|(^\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{1,2}.[ap]..m.)\s-\s([^:]+):.(.+)|"
+patron <- r"---((^\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{1,2}.[ap]..m.)\s-\s([^:]+):.(.+))---"
 
 m <- regexec(patron, registros_chats)
 
